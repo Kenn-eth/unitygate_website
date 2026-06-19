@@ -12,8 +12,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-brand-green/10 bg-brand-paper/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <Link href="/" className="flex items-center gap-3 group" aria-label="UnityGate home">
-          <Wordmark className="h-9 w-auto text-brand-green" />
+        <Link href="/" className="flex items-center group" aria-label="UnityGate home">
+          <Wordmark variant="dark" className="h-10 text-base" />
           <span className="sr-only">UnityGate Integrated Services</span>
         </Link>
         <nav aria-label="Primary" className="hidden md:block">

@@ -1,6 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow, Section, SerifHeading } from "@/components/section";
 import { CtaBand } from "@/components/cta-band";
+
+const HERO_IMAGE =
+  "https://images.pexels.com/photos/33719774/pexels-photo-33719774.jpeg?auto=compress&cs=tinysrgb&w=2000";
 
 const pillars = [
   {
@@ -44,86 +48,61 @@ export default function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-brand-paper">
+    <section className="relative isolate overflow-hidden text-white">
+      <Image
+        src={HERO_IMAGE}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="-z-20 object-cover"
+      />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,rgba(200,144,32,0.10),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(0,76,36,0.08),transparent_50%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(110deg,rgba(0,53,26,0.92)_0%,rgba(0,76,36,0.80)_45%,rgba(0,76,36,0.45)_100%)]"
       />
-      <div className="mx-auto grid max-w-6xl gap-16 px-6 py-24 sm:py-32 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-        <div>
-          <Eyebrow>UnityGate Integrated Services</Eyebrow>
-          <h1 className="mt-6 font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-brand-green sm:text-6xl lg:text-[64px]">
-            Stewarding capital{" "}
-            <span className="relative inline-block">
-              with discipline.
-              <span
-                aria-hidden
-                className="absolute -bottom-2 left-0 h-[6px] w-full rounded-full bg-brand-gold/85"
-              />
-            </span>
-          </h1>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-brand-ink/75">
-            A patient investment firm built around two convictions: that thoughtful
-            allocation compounds over decades, and that every client deserves the same
-            care a family office would give its own capital.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-brand-green px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-green-dark"
-            >
-              Schedule a consultation
-              <span aria-hidden>→</span>
-            </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-brand-green underline decoration-brand-gold decoration-2 underline-offset-8 hover:decoration-brand-gold-dark"
-            >
-              Explore our services
-            </Link>
-          </div>
-          <p className="mt-12 font-serif text-base italic text-brand-green/70">
-            Connecting People, Powering Progress.
-          </p>
-        </div>
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_right,rgba(200,144,32,0.22),transparent_55%)]"
+      />
 
-        <div className="relative">
-          <div className="rounded-2xl border border-brand-green/15 bg-white p-8 shadow-[0_30px_60px_-30px_rgba(0,76,36,0.25)]">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold">
-              At a glance
-            </p>
-            <dl className="mt-6 grid grid-cols-2 gap-6">
-              <Stat label="Founded" value="2015" />
-              <Stat label="Client retention" value="98%" />
-              <Stat label="Senior partners" value="6" />
-              <Stat label="Investment horizon" value="10y+" />
-            </dl>
-            <div className="mt-8 border-t border-brand-green/10 pt-6">
-              <p className="text-sm leading-relaxed text-brand-ink/75">
-                Independent, privately held, and structured to put client outcomes first.
-              </p>
-            </div>
-          </div>
-          <div
-            aria-hidden
-            className="absolute -bottom-6 -right-6 -z-10 h-32 w-32 rounded-2xl bg-brand-gold/30"
-          />
-          <div
-            aria-hidden
-            className="absolute -top-6 -left-6 -z-10 h-24 w-24 rounded-2xl bg-brand-mint"
-          />
+      <div className="mx-auto max-w-4xl px-6 py-28 sm:py-36 lg:py-44">
+        <Eyebrow className="text-brand-gold">UnityGate Integrated Services</Eyebrow>
+        <h1 className="mt-6 font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-[68px]">
+          Stewarding capital{" "}
+          <span className="relative inline-block">
+            with discipline.
+            <span
+              aria-hidden
+              className="absolute -bottom-2 left-0 h-[6px] w-full rounded-full bg-brand-gold/85"
+            />
+          </span>
+        </h1>
+        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-brand-mint/90">
+          A patient investment firm built around two convictions: that thoughtful
+          allocation compounds over decades, and that every client deserves the same
+          care a family office would give its own capital.
+        </p>
+        <div className="mt-10 flex flex-wrap items-center gap-4">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-brand-gold px-7 py-3.5 text-sm font-semibold text-brand-green-dark transition-colors hover:bg-brand-gold-dark hover:text-white"
+          >
+            Schedule a consultation
+            <span aria-hidden>→</span>
+          </Link>
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 rounded-full border border-brand-mint/40 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-brand-gold hover:text-brand-gold"
+          >
+            Explore our services
+          </Link>
         </div>
+        <p className="mt-12 font-serif text-base italic text-brand-mint/80">
+          Connecting People, Powering Progress.
+        </p>
       </div>
     </section>
-  );
-}
-
-function Stat({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <dt className="text-xs uppercase tracking-wider text-brand-ink/60">{label}</dt>
-      <dd className="mt-1 font-serif text-3xl font-semibold text-brand-green">{value}</dd>
-    </div>
   );
 }
 

@@ -8,7 +8,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
-            <Wordmark className="h-10 w-auto text-brand-mint" />
+            <Wordmark variant="light" className="h-12 text-lg" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-brand-mint/80">
               UnityGate Integrated Services stewards capital for families, founders, and
               institutions through disciplined wealth and asset management.
