@@ -95,7 +95,7 @@ function ContactHero() {
           </h1>
           <p className="mt-8 text-lg leading-relaxed text-brand-ink/75">
             Whether you&rsquo;re an investor, a supplier, or exploring a partnership
-            with one of our divisions — we&rsquo;re a message away.
+            with one of our subsidiaries — we&rsquo;re a message away.
           </p>
         </div>
       </div>

@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | UnityGate Integrated Services",
   },
   description:
-    "UnityGate Integrated Services PLC is a Nigerian-owned conglomerate operating six business divisions across capital, transport, trading, properties, building supplies, and new ventures.",
+    "UnityGate Integrated Services PLC is a Nigerian-owned conglomerate operating six business subsidiaries across capital, transport, trading, properties, building supplies, and new ventures.",
 };
 
 export default function RootLayout({

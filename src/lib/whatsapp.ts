@@ -4,7 +4,7 @@ export const WHATSAPP_NUMBER =
   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "2347076323825";
 
 export const WHATSAPP_DEFAULT_MESSAGE =
-  "Hello UnityGate, I'd like to learn more about your business divisions.";
+  "Hello UnityGate, I'd like to learn more about your business subsidiaries.";
 
 export function whatsappUrl(message: string = WHATSAPP_DEFAULT_MESSAGE): string {
   const params = new URLSearchParams({ text: message });

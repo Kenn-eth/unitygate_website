@@ -4,12 +4,12 @@ import { Eyebrow, Section, DisplayHeading } from "@/components/section";
 import { CtaBand } from "@/components/cta-band";
 
 export const metadata: Metadata = {
-  title: "Divisions",
+  title: "Our Subsidiaries",
   description:
-    "UnityGate Integrated Services PLC operates six business divisions — Capital, Transport, Trading, Properties, Building Supplies, and Ventures — across strategic sectors of the Nigerian economy.",
+    "UnityGate Integrated Services PLC operates six business subsidiaries — Capital, Transport, Trading, Properties, Building Supplies, and Ventures — across strategic sectors of the Nigerian economy.",
 };
 
-type Division = {
+type Subsidiary = {
   id: string;
   name: string;
   role: string;
@@ -18,17 +18,17 @@ type Division = {
   focus: string[];
 };
 
-const divisions: Division[] = [
+const subsidiaries: Subsidiary[] = [
   {
     id: "capital",
     name: "UnityGate Capital",
     role: "Investor relations & capital management",
     headline: "The capital arm of the conglomerate.",
     description:
-      "UnityGate Capital structures investor participation, manages the flow of capital between the group's operating divisions, and oversees financial reporting and stewardship on behalf of the wider UnityGate group.",
+      "UnityGate Capital structures investor participation, manages the flow of capital between the group's operating subsidiaries, and oversees financial reporting and stewardship on behalf of the wider UnityGate group.",
     focus: [
       "Investor onboarding and relations",
-      "Capital allocation across divisions",
+      "Capital allocation across subsidiaries",
       "Financial reporting and stewardship",
       "Treasury and liquidity management",
     ],
@@ -100,29 +100,29 @@ const divisions: Division[] = [
       "Opportunity evaluation and diligence",
       "Seed capital and incubation",
       "Partnership structuring",
-      "Path-to-division for viable ventures",
+      "Path-to-subsidiary for viable ventures",
     ],
   },
 ];
 
-export default function DivisionsPage() {
+export default function SubsidiariesPage() {
   return (
     <>
-      <DivisionsHero />
-      {divisions.map((d, i) => (
-        <DivisionBlock key={d.id} division={d} bg={i % 2 === 0 ? "paper" : "mint"} />
+      <SubsidiariesHero />
+      {subsidiaries.map((d, i) => (
+        <SubsidiaryBlock key={d.id} subsidiary={d} bg={i % 2 === 0 ? "paper" : "mint"} />
       ))}
       <GroupOverview />
       <CtaBand
         heading="Want to work with UnityGate?"
-        body="Whether as an investor, a supplier, or a partner across one of our divisions — we welcome the conversation."
+        body="Whether as an investor, a supplier, or a partner across one of our subsidiaries — we welcome the conversation."
         ctaLabel="Get in touch"
       />
     </>
   );
 }
 
-function DivisionsHero() {
+function SubsidiariesHero() {
   return (
     <section className="relative overflow-hidden bg-brand-green text-brand-mint">
       <div
@@ -130,68 +130,39 @@ function DivisionsHero() {
         className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_top_right,#C89020,transparent_55%)]"
       />
       <div className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32">
-        <Eyebrow className="text-brand-gold">Divisions</Eyebrow>
+        <Eyebrow className="text-brand-gold">Our Subsidiaries</Eyebrow>
         <h1 className="mt-6 max-w-3xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-          Six operating divisions, one integrated group.
+          Six operating subsidiaries, one integrated group.
         </h1>
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-brand-mint/85">
           UnityGate Integrated Services PLC operates across strategic sectors of the
           Nigerian economy — identifying, financing, and managing commercially viable
-          businesses through a family of focused divisions.
+          businesses through a family of focused subsidiaries.
         </p>
-        <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {divisions.map((d) => (
-            <DivisionJump key={d.id} division={d} />
-          ))}
-        </div>
       </div>
     </section>
   );
 }
 
-function DivisionJump({ division }: { division: Division }) {
-  return (
-    <a
-      href={`#${division.id}`}
-      className="group flex items-center justify-between rounded-xl border border-brand-mint/15 bg-brand-green-dark/40 p-4 transition-colors hover:border-brand-gold hover:bg-brand-green-dark"
-    >
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-gold">
-          {division.role}
-        </p>
-        <p className="mt-1 font-display text-base font-semibold text-white">
-          {division.name}
-        </p>
-      </div>
-      <span
-        aria-hidden
-        className="text-brand-gold transition-transform group-hover:translate-y-1"
-      >
-        ↓
-      </span>
-    </a>
-  );
-}
-
-function DivisionBlock({
-  division,
+function SubsidiaryBlock({
+  subsidiary,
   bg,
 }: {
-  division: Division;
+  subsidiary: Subsidiary;
   bg: "paper" | "mint";
 }) {
   const bgClass = bg === "paper" ? "bg-brand-paper" : "bg-brand-mint";
   return (
-    <Section id={division.id} className={bgClass}>
+    <Section id={subsidiary.id} className={bgClass}>
       <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <Eyebrow>{division.role}</Eyebrow>
-          <DisplayHeading className="mt-5">{division.name}</DisplayHeading>
+          <Eyebrow>{subsidiary.role}</Eyebrow>
+          <DisplayHeading className="mt-5">{subsidiary.name}</DisplayHeading>
           <p className="mt-5 font-display text-lg font-semibold text-brand-green">
-            {division.headline}
+            {subsidiary.headline}
           </p>
           <p className="mt-4 text-base leading-relaxed text-brand-ink/75">
-            {division.description}
+            {subsidiary.description}
           </p>
         </div>
         <article className="rounded-xl border border-brand-green/10 bg-white p-8">
@@ -199,7 +170,7 @@ function DivisionBlock({
             What we do
           </h3>
           <ul className="mt-5 space-y-3 text-sm leading-relaxed text-brand-ink/80">
-            {division.focus.map((f) => (
+            {subsidiary.focus.map((f) => (
               <li key={f} className="flex gap-3">
                 <span
                   aria-hidden
@@ -225,13 +196,13 @@ function GroupOverview() {
         </h2>
         <p className="mt-6 text-base leading-relaxed text-brand-mint/85">
           UnityGate Capital sits at the centre of the group — allocating and recycling
-          capital between the operating divisions. Each division stands on its own as
+          capital between the operating subsidiaries. Each subsidiary stands on its own as
           a real business, and together they form a diversified footing across the
           Nigerian economy.
         </p>
       </div>
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {divisions.map((d) => (
+        {subsidiaries.map((d) => (
           <div
             key={d.id}
             className="rounded-xl border border-brand-mint/15 bg-brand-green-dark/40 p-5"
@@ -246,7 +217,7 @@ function GroupOverview() {
         ))}
       </div>
       <p className="mt-10 text-xs text-brand-mint/60">
-        Interested in a specific division?{" "}
+        Interested in a specific subsidiary?{" "}
         <Link
           href="/contact"
           className="underline decoration-brand-gold underline-offset-4"

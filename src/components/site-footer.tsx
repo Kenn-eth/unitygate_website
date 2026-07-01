@@ -16,7 +16,7 @@ export function SiteFooter() {
             <Wordmark variant="light" className="h-12 text-lg" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-brand-mint/80">
               UnityGate Integrated Services PLC is a Nigerian-owned conglomerate
-              operating six business divisions across capital, transport, trading,
+              operating six business subsidiaries across capital, transport, trading,
               properties, building supplies, and new ventures.
             </p>
             <p className="mt-6 font-serif text-lg italic text-brand-gold">
@@ -41,7 +41,7 @@ export function SiteFooter() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm">
               <li><Link href="/" className="hover:text-white">Home</Link></li>
-              <li><Link href="/services" className="hover:text-white">Divisions</Link></li>
+              <li><Link href="/services" className="hover:text-white">Our Subsidiaries</Link></li>
               <li><Link href="/about" className="hover:text-white">About Us</Link></li>
               <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
             </ul>

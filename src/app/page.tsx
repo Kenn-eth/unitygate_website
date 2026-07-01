@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Eyebrow, Section, DisplayHeading } from "@/components/section";
 import { CtaBand } from "@/components/cta-band";
-import { DivisionCarousel } from "@/components/division-carousel";
+import { SubsidiaryCarousel } from "@/components/subsidiary-carousel";
 
-const divisions = [
+const subsidiaries = [
   {
     eyebrow: "UnityGate Capital",
     title: "The capital arm of the group.",
@@ -52,7 +52,7 @@ const principles = [
   },
   {
     title: "Capital recycling",
-    body: "Returns from operating divisions are continuously reinvested into higher-value assets across the group.",
+    body: "Returns from operating subsidiaries are continuously reinvested into higher-value assets across the group.",
   },
   {
     title: "Asset transformation",
@@ -60,18 +60,151 @@ const principles = [
   },
 ];
 
+const strengths = [
+  {
+    title: "Diverse Portfolio",
+    body: "Six subsidiaries across capital, transport, trading, properties, building supplies, and new ventures — spreading exposure and stabilising returns across cycles.",
+    Icon: GridIcon,
+  },
+  {
+    title: "Experienced Team and Partners",
+    body: "A leadership team drawn from finance, operations, and enterprise — working with vetted partners across every sector we operate in.",
+    Icon: UsersIcon,
+  },
+  {
+    title: "Solid Reputation",
+    body: "Built on transparency, structured governance, and consistent delivery — the currency that keeps investors, partners, and suppliers coming back.",
+    Icon: ShieldIcon,
+  },
+  {
+    title: "Local and International Network",
+    body: "Rooted in Nigeria with connections that reach diaspora investors, global suppliers, and international partners across our operating sectors.",
+    Icon: GlobeIcon,
+  },
+];
+
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <DivisionCarousel divisions={divisions} />
+      <SubsidiaryCarousel subsidiaries={subsidiaries} />
       <Principles />
+      <Strengths />
       <CtaBand
         heading="Let's talk about working together."
         body="Whether you're an investor, a partner, or exploring a new opportunity — reach out and a member of the UnityGate team will be in touch within two business days."
         ctaLabel="Get in touch"
       />
     </>
+  );
+}
+
+function Strengths() {
+  return (
+    <Section className="bg-brand-paper">
+      <div className="max-w-2xl">
+        <Eyebrow>Our Strengths</Eyebrow>
+        <DisplayHeading className="mt-5">
+          Why partners, investors, and suppliers choose UnityGate.
+        </DisplayHeading>
+      </div>
+      <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {strengths.map(({ title, body, Icon }) => (
+          <article
+            key={title}
+            className="rounded-2xl border border-brand-green/10 bg-white p-8 transition-shadow hover:shadow-[0_20px_40px_-20px_rgba(0,76,36,0.25)]"
+          >
+            <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-green/8 text-brand-gold ring-1 ring-brand-green/10">
+              <Icon className="h-8 w-8" />
+            </span>
+            <h3 className="mt-6 font-display text-xl font-semibold leading-snug text-brand-green">
+              {title}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-brand-ink/75">
+              {body}
+            </p>
+          </article>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function GridIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="3" width="7" height="7" rx="1.5" />
+      <rect x="3" y="14" width="7" height="7" rx="1.5" />
+      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+    </svg>
+  );
+}
+
+function UsersIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  );
+}
+
+function ShieldIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M12 2L4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3z" />
+      <path d="M9 12l2 2 4-4" />
+    </svg>
+  );
+}
+
+function GlobeIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <path d="M12 3a15 15 0 0 1 0 18" />
+      <path d="M12 3a15 15 0 0 0 0 18" />
+    </svg>
   );
 }
 
@@ -142,7 +275,7 @@ function Hero() {
             href="/services"
             className="inline-flex items-center gap-2 rounded-full border border-brand-mint/40 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-brand-gold hover:text-brand-gold"
           >
-            Explore our divisions
+            Explore our subsidiaries
           </Link>
         </div>
         <p className="mt-12 font-serif text-base italic text-brand-mint/80">

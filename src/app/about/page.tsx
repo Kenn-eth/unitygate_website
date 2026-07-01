@@ -1,43 +1,16 @@
 import type { Metadata } from "next";
-import { Eyebrow, Section, DisplayHeading } from "@/components/section";
+import { Eyebrow, Section } from "@/components/section";
 import { CtaBand } from "@/components/cta-band";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "UnityGate Integrated Services PLC is a Nigerian-owned investment and business development company operating six divisions across strategic sectors of the economy.",
+    "UnityGate Integrated Services PLC is a Nigerian-owned investment and business development company operating six subsidiaries across strategic sectors of the economy.",
 };
-
-const divisions = [
-  {
-    name: "UnityGate Capital",
-    role: "Investor relations & capital management",
-  },
-  {
-    name: "UnityGate Transport",
-    role: "Transportation & fleet operations",
-  },
-  {
-    name: "UnityGate Trading",
-    role: "General merchandise",
-  },
-  {
-    name: "UnityGate Properties",
-    role: "Land & real estate",
-  },
-  {
-    name: "UnityGate Building Supplies",
-    role: "Building materials",
-  },
-  {
-    name: "UnityGate Ventures",
-    role: "New business opportunities",
-  },
-];
 
 const valueProps = [
   "Real-sector business ownership across strategic industries",
-  "Capital recycled between operating divisions",
+  "Capital recycled between operating subsidiaries",
   "Asset-backed positioning through property and materials",
   "Diversified footing across the Nigerian economy",
   "Long-term, inflation-resilient asset accumulation",
@@ -46,7 +19,7 @@ const valueProps = [
 
 const governancePrinciples = [
   "Structured capital tracking",
-  "Defined division mandates",
+  "Defined subsidiary mandates",
   "Clear allocation of funds",
   "Regular internal performance monitoring",
   "Investor communication and reporting structure",
@@ -57,11 +30,10 @@ export default function AboutPage() {
     <>
       <AboutHero />
       <MissionVision />
-      <Divisions />
       <ValueAndGovernance />
       <CtaBand
         heading="Want to understand the group in detail?"
-        body="We're happy to walk you through the divisions, how capital flows between them, and where your interest — as an investor, partner, or supplier — could fit."
+        body="We're happy to walk you through the subsidiaries, how capital flows between them, and where your interest — as an investor, partner, or supplier — could fit."
         ctaLabel="Talk to us"
       />
     </>
@@ -84,7 +56,7 @@ function AboutHero() {
             opportunities across strategic sectors of the Nigerian economy.
           </p>
           <p className="mt-5 text-base leading-relaxed text-brand-ink/70">
-            The group operates through six focused divisions — spanning capital
+            The group operates through six focused subsidiaries — spanning capital
             management, transportation, general merchandise, real estate, building
             supplies, and new ventures — each functioning as a distinct business
             with a clear mandate.
@@ -100,24 +72,39 @@ function MissionVision() {
     <Section className="bg-brand-mint">
       <div className="grid gap-6 md:grid-cols-3">
         <article className="rounded-2xl border border-brand-green/10 bg-white p-8">
-          <Eyebrow>Mission</Eyebrow>
-          <p className="mt-5 font-display text-xl font-semibold leading-snug text-brand-green">
+          <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-green/8 text-brand-gold ring-1 ring-brand-green/10">
+            <TargetIcon className="h-8 w-8" />
+          </span>
+          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.22em] text-brand-gold">
+            Mission
+          </p>
+          <p className="mt-3 font-display text-xl font-semibold leading-snug text-brand-green">
             To build structured and sustainable wealth through disciplined operation
             of real-sector businesses and strategic reinvestment into long-term
             assets.
           </p>
         </article>
         <article className="rounded-2xl border border-brand-green/10 bg-white p-8">
-          <Eyebrow>Vision</Eyebrow>
-          <p className="mt-5 font-display text-xl font-semibold leading-snug text-brand-green">
+          <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-green/8 text-brand-gold ring-1 ring-brand-green/10">
+            <EyeIcon className="h-8 w-8" />
+          </span>
+          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.22em] text-brand-gold">
+            Vision
+          </p>
+          <p className="mt-3 font-display text-xl font-semibold leading-snug text-brand-green">
             To become a leading integrated investment enterprise recognised for
             delivering structured value across strategic sectors of the Nigerian
             economy.
           </p>
         </article>
         <article className="relative overflow-hidden rounded-2xl bg-brand-green p-8 text-brand-mint">
-          <Eyebrow className="text-brand-gold">Motto</Eyebrow>
-          <p className="mt-5 font-serif text-2xl leading-snug italic text-white">
+          <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-gold/15 text-brand-gold ring-1 ring-brand-gold/25">
+            <SparkleIcon className="h-8 w-8" />
+          </span>
+          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.22em] text-brand-gold">
+            Motto
+          </p>
+          <p className="mt-3 font-serif text-2xl leading-snug italic text-white">
             &ldquo;Connecting People, Powering Progress.&rdquo;
           </p>
           <div
@@ -130,39 +117,58 @@ function MissionVision() {
   );
 }
 
-function Divisions() {
+function TargetIcon({ className }: { className?: string }) {
   return (
-    <Section className="bg-brand-paper">
-      <div className="max-w-2xl">
-        <Eyebrow>Our six divisions</Eyebrow>
-        <DisplayHeading className="mt-5">
-          Six businesses. One capital cycle.
-        </DisplayHeading>
-        <p className="mt-5 text-base leading-relaxed text-brand-ink/75">
-          UnityGate Capital sits at the centre of the group, allocating and recycling
-          capital between the five operating divisions. Each division stands as its
-          own real business.
-        </p>
-      </div>
-      <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {divisions.map((d, i) => (
-          <article
-            key={d.name}
-            className="rounded-xl border border-brand-green/10 bg-white p-8"
-          >
-            <span className="font-display text-sm font-semibold text-brand-gold">
-              0{i + 1}
-            </span>
-            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-ink/55">
-              {d.role}
-            </p>
-            <h3 className="mt-2 font-display text-2xl font-semibold text-brand-green">
-              {d.name}
-            </h3>
-          </article>
-        ))}
-      </div>
-    </Section>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="5" />
+      <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function EyeIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+}
+
+function SparkleIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" />
+      <path d="M18.5 15.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z" />
+    </svg>
   );
 }
 
@@ -200,7 +206,7 @@ function ValueAndGovernance() {
           <p className="mt-6 text-base leading-relaxed text-brand-mint/85">
             UnityGate operates with a structured governance approach aimed at
             ensuring accountability, clarity, and operational discipline across every
-            division.
+            subsidiary.
           </p>
           <ul className="mt-8 space-y-3 text-sm leading-relaxed text-brand-mint/90">
             {governancePrinciples.map((g) => (
