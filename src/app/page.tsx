@@ -1,36 +1,62 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Eyebrow, Section, SerifHeading } from "@/components/section";
+import { Eyebrow, Section, DisplayHeading } from "@/components/section";
 import { CtaBand } from "@/components/cta-band";
+import { DivisionCarousel } from "@/components/division-carousel";
 
-const HERO_IMAGE =
-  "https://images.pexels.com/photos/33719774/pexels-photo-33719774.jpeg?auto=compress&cs=tinysrgb&w=2000";
-
-const pillars = [
+const divisions = [
   {
-    title: "Stewardship",
-    body: "Capital placed with us is treated as a trust, not a transaction. We invest with patience, transparency, and a long horizon.",
+    eyebrow: "UnityGate Capital",
+    title: "The capital arm of the group.",
+    body: "Investor relations and capital management. UnityGate Capital structures investor participation, manages inflows and outflows, and oversees financial reporting across the wider UnityGate group.",
+    initial: "C",
   },
   {
-    title: "Discipline",
-    body: "A clear investment policy, written in advance, governs every decision. We avoid drift, narrative trades, and shortcuts.",
+    eyebrow: "UnityGate Transport",
+    title: "Fleets that keep the country moving.",
+    body: "Transportation and fleet operations — commercial vehicles, urban mobility, last-mile delivery, and intercity cargo movement across Nigeria.",
+    imageSrc: "/logistics.jpg",
   },
   {
-    title: "Partnership",
-    body: "We work with a small, considered client base so every relationship gets a senior point of contact.",
+    eyebrow: "UnityGate Trading",
+    title: "Trade at scale, everyday goods.",
+    body: "Sourcing, distribution, and wholesale of general merchandise — FMCG, apparel, and consumer goods — through established supply chains and retail networks.",
+    imageSrc: "/general-merchandise.jpg",
+  },
+  {
+    eyebrow: "UnityGate Properties",
+    title: "Property that anchors long-term value.",
+    body: "Land acquisition, property development, and real estate management — from residential communities to commercial holdings — in growth corridors across the country.",
+    imageSrc: "/real-estate.jpg",
+  },
+  {
+    eyebrow: "UnityGate Building Supplies",
+    title: "Materials that build the country.",
+    body: "Supply and distribution of building materials — cement, steel, aggregates, and finishing supplies — to developers, contractors, and end-users nationwide.",
+    imageSrc: "/construction.jpg",
+  },
+  {
+    eyebrow: "UnityGate Ventures",
+    title: "Where new opportunities become new companies.",
+    body: "Incubation, evaluation, and financing of new business opportunities — seeding the next generation of UnityGate operating businesses.",
+    initial: "V",
   },
 ];
 
-const services = [
+// Switch between hero videos: "/hero.mp4" (Pexels naira-bills) or "/hero-alt.mp4" (Pixabay drone-city).
+const HERO_VIDEO = "/hero-alt.mp4";
+
+const principles = [
   {
-    title: "Wealth Management",
-    body: "Personalised portfolios, financial planning, and ongoing stewardship for individuals, families, and family offices.",
-    href: "/services#wealth-management",
+    title: "Real economy participation",
+    body: "Capital is deployed into active, revenue-generating businesses — not idle financial instruments.",
   },
   {
-    title: "Asset / Fund Management",
-    body: "Institutional-grade pooled vehicles and discretionary mandates built around clear strategies and disciplined risk controls.",
-    href: "/services#asset-management",
+    title: "Capital recycling",
+    body: "Returns from operating divisions are continuously reinvested into higher-value assets across the group.",
+  },
+  {
+    title: "Asset transformation",
+    body: "Operational income is progressively converted into tangible assets that appreciate and outpace inflation.",
   },
 ];
 
@@ -38,40 +64,53 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Pillars />
-      <ServicesPreview />
-      <AboutTeaser />
-      <CtaBand />
+      <DivisionCarousel divisions={divisions} />
+      <Principles />
+      <CtaBand
+        heading="Let's talk about working together."
+        body="Whether you're an investor, a partner, or exploring a new opportunity — reach out and a member of the UnityGate team will be in touch within two business days."
+        ctaLabel="Get in touch"
+      />
     </>
   );
 }
 
 function Hero() {
   return (
-    <section className="relative isolate overflow-hidden text-white">
-      <Image
-        src={HERO_IMAGE}
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="-z-20 object-cover"
+    <section className="relative isolate overflow-hidden bg-brand-green-dark text-white">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        aria-hidden
+        className="absolute inset-0 -z-20 h-full w-full object-cover"
+      >
+        <source src={HERO_VIDEO} type="video/mp4" />
+      </video>
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_70%_at_20%_40%,rgba(0,53,26,0.65)_0%,rgba(0,76,36,0.22)_55%,transparent_85%)]"
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[linear-gradient(110deg,rgba(0,53,26,0.92)_0%,rgba(0,76,36,0.80)_45%,rgba(0,76,36,0.45)_100%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(0,30,15,0.45)_0%,transparent_30%)]"
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_right,rgba(200,144,32,0.22),transparent_55%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_85%_80%,rgba(200,144,32,0.22),transparent_55%)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-gold/55 to-transparent"
       />
 
       <div className="mx-auto max-w-4xl px-6 py-28 sm:py-36 lg:py-44">
-        <Eyebrow className="text-brand-gold">UnityGate Integrated Services</Eyebrow>
-        <h1 className="mt-6 font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-[68px]">
-          Stewarding capital{" "}
+        <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.55)] sm:text-6xl lg:text-[68px]">
+          A moving money makes{" "}
           <span className="relative inline-block">
-            with discipline.
+            more money.
             <span
               aria-hidden
               className="absolute -bottom-2 left-0 h-[6px] w-full rounded-full bg-brand-gold/85"
@@ -79,23 +118,31 @@ function Hero() {
           </span>
         </h1>
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-brand-mint/90">
-          A patient investment firm built around two convictions: that thoughtful
-          allocation compounds over decades, and that every client deserves the same
-          care a family office would give its own capital.
+          UnityGate Integrated Services PLC is a Nigerian-owned conglomerate operating
+          businesses across{" "}
+          <span className="font-semibold text-brand-gold">capital</span>,{" "}
+          <span className="font-semibold text-brand-gold">transport</span>,{" "}
+          <span className="font-semibold text-brand-gold">trading</span>,{" "}
+          <span className="font-semibold text-brand-gold">properties</span>,{" "}
+          <span className="font-semibold text-brand-gold">building supplies</span>,
+          and{" "}
+          <span className="font-semibold text-brand-gold">new ventures</span> —
+          identifying, financing, and managing commercially viable opportunities
+          across strategic sectors of the Nigerian economy.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 rounded-full bg-brand-gold px-7 py-3.5 text-sm font-semibold text-brand-green-dark transition-colors hover:bg-brand-gold-dark hover:text-white"
           >
-            Schedule a consultation
+            Get in touch
             <span aria-hidden>→</span>
           </Link>
           <Link
             href="/services"
             className="inline-flex items-center gap-2 rounded-full border border-brand-mint/40 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-brand-gold hover:text-brand-gold"
           >
-            Explore our services
+            Explore our divisions
           </Link>
         </div>
         <p className="mt-12 font-serif text-base italic text-brand-mint/80">
@@ -106,113 +153,33 @@ function Hero() {
   );
 }
 
-function Pillars() {
+function Principles() {
   return (
     <Section className="bg-brand-mint">
       <div className="max-w-2xl">
-        <Eyebrow>What guides us</Eyebrow>
-        <SerifHeading className="mt-5">
-          A measured approach, written down before the market opens.
-        </SerifHeading>
+        <Eyebrow>How we operate</Eyebrow>
+        <DisplayHeading className="mt-5">
+          A model built on three principles, not three promises.
+        </DisplayHeading>
         <p className="mt-5 text-base leading-relaxed text-brand-ink/75">
-          Our philosophy is not a slogan. It is a written investment policy, reviewed
-          quarterly, and shared in full with every client.
+          Sustainable wealth is not built through speculation. It is built through
+          structured participation in real businesses, efficient capital allocation,
+          and disciplined reinvestment.
         </p>
       </div>
       <div className="mt-14 grid gap-6 md:grid-cols-3">
-        {pillars.map((p, i) => (
+        {principles.map((p, i) => (
           <article
             key={p.title}
             className="group relative rounded-xl border border-brand-green/10 bg-white p-8 transition-shadow hover:shadow-[0_20px_40px_-20px_rgba(0,76,36,0.25)]"
           >
-            <span className="font-serif text-sm text-brand-gold">
-              0{i + 1}
-            </span>
-            <h3 className="mt-4 font-serif text-2xl font-semibold text-brand-green">
+            <span className="font-display text-sm font-semibold text-brand-gold">0{i + 1}</span>
+            <h3 className="mt-4 font-display text-2xl font-semibold text-brand-green">
               {p.title}
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-brand-ink/75">{p.body}</p>
           </article>
         ))}
-      </div>
-    </Section>
-  );
-}
-
-function ServicesPreview() {
-  return (
-    <Section>
-      <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-        <div className="max-w-2xl">
-          <Eyebrow>Our services</Eyebrow>
-          <SerifHeading className="mt-5">
-            Two focused practices, one investment philosophy.
-          </SerifHeading>
-        </div>
-        <Link
-          href="/services"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-brand-green underline decoration-brand-gold decoration-2 underline-offset-8 hover:decoration-brand-gold-dark"
-        >
-          View all services →
-        </Link>
-      </div>
-
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
-        {services.map((s) => (
-          <Link
-            key={s.title}
-            href={s.href}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-brand-green/10 bg-white p-10 transition-all hover:border-brand-gold/40 hover:shadow-[0_30px_60px_-30px_rgba(0,76,36,0.25)]"
-          >
-            <div>
-              <h3 className="font-serif text-3xl font-semibold text-brand-green">
-                {s.title}
-              </h3>
-              <p className="mt-5 text-base leading-relaxed text-brand-ink/75">{s.body}</p>
-            </div>
-            <span className="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-brand-gold-dark">
-              Learn more
-              <span
-                aria-hidden
-                className="transition-transform group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </span>
-          </Link>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-function AboutTeaser() {
-  return (
-    <Section className="bg-brand-green text-brand-mint">
-      <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
-        <div>
-          <Eyebrow className="text-brand-gold">About UnityGate</Eyebrow>
-          <h2 className="mt-5 font-serif text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
-            Built to outlast cycles, careers, and headlines.
-          </h2>
-        </div>
-        <div className="space-y-5 text-base leading-relaxed text-brand-mint/85">
-          <p>
-            UnityGate Integrated Services was founded on a simple idea: that capital deserves a custodian
-            with the patience to think in decades and the discipline to act in minutes.
-          </p>
-          <p>
-            We are privately held by our partners. There are no quarterly sales targets, no
-            third-party shareholders, and no incentive to chase whatever is fashionable this
-            quarter. There is only the client, the policy, and the long view.
-          </p>
-          <Link
-            href="/about"
-            className="inline-flex items-center gap-2 pt-3 text-sm font-semibold text-brand-gold underline decoration-brand-gold decoration-2 underline-offset-8 hover:text-white"
-          >
-            Read our story →
-          </Link>
-        </div>
       </div>
     </Section>
   );

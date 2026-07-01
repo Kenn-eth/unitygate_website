@@ -1,74 +1,128 @@
 import type { Metadata } from "next";
-import { Eyebrow, Section, SerifHeading } from "@/components/section";
+import Link from "next/link";
+import { Eyebrow, Section, DisplayHeading } from "@/components/section";
 import { CtaBand } from "@/components/cta-band";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Divisions",
   description:
-    "UnityGate offers wealth management and asset / fund management built on a disciplined, written investment policy.",
+    "UnityGate Integrated Services PLC operates six business divisions — Capital, Transport, Trading, Properties, Building Supplies, and Ventures — across strategic sectors of the Nigerian economy.",
 };
 
-const wealthFeatures = [
+type Division = {
+  id: string;
+  name: string;
+  role: string;
+  headline: string;
+  description: string;
+  focus: string[];
+};
+
+const divisions: Division[] = [
   {
-    title: "Discovery & investment policy",
-    body: "We begin with a written policy that captures your goals, time horizon, liquidity needs, and risk tolerance.",
+    id: "capital",
+    name: "UnityGate Capital",
+    role: "Investor relations & capital management",
+    headline: "The capital arm of the conglomerate.",
+    description:
+      "UnityGate Capital structures investor participation, manages the flow of capital between the group's operating divisions, and oversees financial reporting and stewardship on behalf of the wider UnityGate group.",
+    focus: [
+      "Investor onboarding and relations",
+      "Capital allocation across divisions",
+      "Financial reporting and stewardship",
+      "Treasury and liquidity management",
+    ],
   },
   {
-    title: "Portfolio construction",
-    body: "Diversified across asset classes, geographies, and managers. Built once, rebalanced with discipline.",
+    id: "transport",
+    name: "UnityGate Transport",
+    role: "Transportation & fleet operations",
+    headline: "Fleets that keep the country moving.",
+    description:
+      "Transportation and fleet operations across Nigeria — commercial vehicles, urban mobility, last-mile delivery, and intercity cargo movement. A working, income-generating asset base built for daily cash flow.",
+    focus: [
+      "Commercial vehicle fleets",
+      "Urban and intercity mobility",
+      "Last-mile delivery and logistics",
+      "Fleet maintenance and operations",
+    ],
   },
   {
-    title: "Financial planning",
-    body: "Tax, retirement, estate, and philanthropic planning coordinated with your other advisors.",
+    id: "trading",
+    name: "UnityGate Trading",
+    role: "General merchandise",
+    headline: "Trade at scale, everyday goods.",
+    description:
+      "Sourcing, distribution, and wholesale of general merchandise. UnityGate Trading operates through established supply chains and retail networks, moving FMCG, apparel, and consumer goods at scale.",
+    focus: [
+      "FMCG and consumer goods",
+      "Apparel and general merchandise",
+      "Wholesale and distribution networks",
+      "Established retail partnerships",
+    ],
   },
   {
-    title: "Ongoing stewardship",
-    body: "Quarterly reviews, annual policy refresh, and a senior point of contact who answers the phone.",
+    id: "properties",
+    name: "UnityGate Properties",
+    role: "Land & real estate",
+    headline: "Property that anchors long-term value.",
+    description:
+      "Land acquisition, property development, and real estate management — from residential communities to commercial holdings — concentrated in growth corridors across the country.",
+    focus: [
+      "Land acquisition in growth corridors",
+      "Residential development",
+      "Commercial property holdings",
+      "Long-term land banking",
+    ],
+  },
+  {
+    id: "building-supplies",
+    name: "UnityGate Building Supplies",
+    role: "Building materials",
+    headline: "Materials that build the country.",
+    description:
+      "Supply and distribution of building materials to developers, contractors, and end-users. UnityGate Building Supplies serves the construction economy that Nigeria is growing into.",
+    focus: [
+      "Cement, steel, and structural materials",
+      "Aggregates and foundation supplies",
+      "Finishing and interior materials",
+      "Nationwide contractor supply",
+    ],
+  },
+  {
+    id: "ventures",
+    name: "UnityGate Ventures",
+    role: "New business opportunities",
+    headline: "Where new opportunities become new companies.",
+    description:
+      "Incubation, evaluation, and financing of new business opportunities. UnityGate Ventures is where the group tests, seeds, and stands up the next generation of operating businesses.",
+    focus: [
+      "Opportunity evaluation and diligence",
+      "Seed capital and incubation",
+      "Partnership structuring",
+      "Path-to-division for viable ventures",
+    ],
   },
 ];
 
-const assetFeatures = [
-  {
-    title: "Defined strategies",
-    body: "Each vehicle has a written mandate, a stated benchmark, and a risk budget. No style drift.",
-  },
-  {
-    title: "Independent risk oversight",
-    body: "Risk is monitored by a function independent of the investment team and reported to clients monthly.",
-  },
-  {
-    title: "Institutional reporting",
-    body: "Audited statements, GIPS-aligned performance reporting, and transparent fee structures.",
-  },
-  {
-    title: "Aligned incentives",
-    body: "Partners invest meaningful personal capital alongside clients in every strategy we offer.",
-  },
-];
-
-const approach = [
-  { step: "01", title: "Listen", body: "We start with questions. Goals, constraints, prior experiences." },
-  { step: "02", title: "Document", body: "Everything we agree to is captured in a written investment policy." },
-  { step: "03", title: "Build", body: "Portfolios are constructed against the policy, not against the headlines." },
-  { step: "04", title: "Review", body: "We meet quarterly. We refresh the policy annually. We never go silent." },
-];
-
-export default function ServicesPage() {
+export default function DivisionsPage() {
   return (
     <>
-      <ServicesHero />
-      <WealthManagement />
-      <AssetManagement />
-      <Approach />
+      <DivisionsHero />
+      {divisions.map((d, i) => (
+        <DivisionBlock key={d.id} division={d} bg={i % 2 === 0 ? "paper" : "mint"} />
+      ))}
+      <GroupOverview />
       <CtaBand
-        heading="Considering a new advisor?"
-        body="A short, exploratory conversation is the best way to decide whether we are the right fit for your goals."
+        heading="Want to work with UnityGate?"
+        body="Whether as an investor, a supplier, or a partner across one of our divisions — we welcome the conversation."
+        ctaLabel="Get in touch"
       />
     </>
   );
 }
 
-function ServicesHero() {
+function DivisionsHero() {
   return (
     <section className="relative overflow-hidden bg-brand-green text-brand-mint">
       <div
@@ -76,31 +130,39 @@ function ServicesHero() {
         className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_top_right,#C89020,transparent_55%)]"
       />
       <div className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32">
-        <Eyebrow className="text-brand-gold">Services</Eyebrow>
-        <h1 className="mt-6 max-w-3xl font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-          Two focused practices, governed by one investment philosophy.
+        <Eyebrow className="text-brand-gold">Divisions</Eyebrow>
+        <h1 className="mt-6 max-w-3xl font-display text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+          Six operating divisions, one integrated group.
         </h1>
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-brand-mint/85">
-          Whether you are an individual seeking a long-term steward of family wealth or an
-          institution looking for a disciplined manager of a specific mandate, our work
-          begins the same way — with a written investment policy.
+          UnityGate Integrated Services PLC operates across strategic sectors of the
+          Nigerian economy — identifying, financing, and managing commercially viable
+          businesses through a family of focused divisions.
         </p>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
-          <ServiceJump href="#wealth-management" label="Wealth Management" />
-          <ServiceJump href="#asset-management" label="Asset / Fund Management" />
+        <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {divisions.map((d) => (
+            <DivisionJump key={d.id} division={d} />
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-function ServiceJump({ href, label }: { href: string; label: string }) {
+function DivisionJump({ division }: { division: Division }) {
   return (
     <a
-      href={href}
-      className="group flex items-center justify-between rounded-xl border border-brand-mint/15 bg-brand-green-dark/40 p-5 transition-colors hover:border-brand-gold hover:bg-brand-green-dark"
+      href={`#${division.id}`}
+      className="group flex items-center justify-between rounded-xl border border-brand-mint/15 bg-brand-green-dark/40 p-4 transition-colors hover:border-brand-gold hover:bg-brand-green-dark"
     >
-      <span className="font-serif text-xl text-white">{label}</span>
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-gold">
+          {division.role}
+        </p>
+        <p className="mt-1 font-display text-base font-semibold text-white">
+          {division.name}
+        </p>
+      </div>
       <span
         aria-hidden
         className="text-brand-gold transition-transform group-hover:translate-y-1"
@@ -111,102 +173,88 @@ function ServiceJump({ href, label }: { href: string; label: string }) {
   );
 }
 
-function WealthManagement() {
+function DivisionBlock({
+  division,
+  bg,
+}: {
+  division: Division;
+  bg: "paper" | "mint";
+}) {
+  const bgClass = bg === "paper" ? "bg-brand-paper" : "bg-brand-mint";
   return (
-    <Section id="wealth-management" className="bg-brand-paper">
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
+    <Section id={division.id} className={bgClass}>
+      <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <Eyebrow>01 — Wealth Management</Eyebrow>
-          <SerifHeading className="mt-5">
-            A family-office level of care, made accessible.
-          </SerifHeading>
-          <p className="mt-5 text-base leading-relaxed text-brand-ink/75">
-            For individuals, families, and family offices who want their capital managed
-            with the same care, transparency, and long view they would give it themselves.
+          <Eyebrow>{division.role}</Eyebrow>
+          <DisplayHeading className="mt-5">{division.name}</DisplayHeading>
+          <p className="mt-5 font-display text-lg font-semibold text-brand-green">
+            {division.headline}
           </p>
-          <div className="mt-8 inline-flex items-center gap-3 rounded-full bg-brand-mint px-5 py-2 text-sm font-medium text-brand-green">
-            Typical engagement: $1M+ in investable assets
-          </div>
+          <p className="mt-4 text-base leading-relaxed text-brand-ink/75">
+            {division.description}
+          </p>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2">
-          {wealthFeatures.map((f) => (
-            <article
-              key={f.title}
-              className="rounded-xl border border-brand-green/10 bg-white p-7"
-            >
-              <h3 className="font-serif text-lg font-semibold text-brand-green">
-                {f.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-brand-ink/75">{f.body}</p>
-            </article>
-          ))}
-        </div>
+        <article className="rounded-xl border border-brand-green/10 bg-white p-8">
+          <h3 className="font-display text-lg font-semibold text-brand-green">
+            What we do
+          </h3>
+          <ul className="mt-5 space-y-3 text-sm leading-relaxed text-brand-ink/80">
+            {division.focus.map((f) => (
+              <li key={f} className="flex gap-3">
+                <span
+                  aria-hidden
+                  className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-brand-gold"
+                />
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
       </div>
     </Section>
   );
 }
 
-function AssetManagement() {
+function GroupOverview() {
   return (
-    <Section id="asset-management" className="bg-brand-mint">
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
-        <div className="lg:sticky lg:top-28 lg:self-start">
-          <Eyebrow>02 — Asset / Fund Management</Eyebrow>
-          <SerifHeading className="mt-5">
-            Institutional mandates, run with founder-grade attention.
-          </SerifHeading>
-          <p className="mt-5 text-base leading-relaxed text-brand-ink/75">
-            Discretionary mandates and pooled vehicles for institutions, endowments, and
-            sophisticated allocators who want a clear strategy, a clear benchmark, and a
-            clear conversation.
-          </p>
-          <div className="mt-8 inline-flex items-center gap-3 rounded-full bg-brand-green px-5 py-2 text-sm font-medium text-white">
-            Built for institutional allocators
-          </div>
-        </div>
-        <div className="grid gap-5 sm:grid-cols-2">
-          {assetFeatures.map((f) => (
-            <article
-              key={f.title}
-              className="rounded-xl border border-brand-green/10 bg-white p-7"
-            >
-              <h3 className="font-serif text-lg font-semibold text-brand-green">
-                {f.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-brand-ink/75">{f.body}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-function Approach() {
-  return (
-    <Section className="bg-brand-paper">
+    <Section className="bg-brand-green text-brand-mint">
       <div className="max-w-2xl">
-        <Eyebrow>Our approach</Eyebrow>
-        <SerifHeading className="mt-5">
-          A four-step rhythm we have repeated for a decade.
-        </SerifHeading>
+        <Eyebrow className="text-brand-gold">Group overview</Eyebrow>
+        <h2 className="mt-5 font-display text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
+          One capital arm. Five operating businesses.
+        </h2>
+        <p className="mt-6 text-base leading-relaxed text-brand-mint/85">
+          UnityGate Capital sits at the centre of the group — allocating and recycling
+          capital between the operating divisions. Each division stands on its own as
+          a real business, and together they form a diversified footing across the
+          Nigerian economy.
+        </p>
       </div>
-      <ol className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {approach.map((s) => (
-          <li
-            key={s.step}
-            className="relative rounded-xl border border-brand-green/10 bg-white p-7"
+      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {divisions.map((d) => (
+          <div
+            key={d.id}
+            className="rounded-xl border border-brand-mint/15 bg-brand-green-dark/40 p-5"
           >
-            <span className="font-serif text-3xl font-semibold text-brand-gold">
-              {s.step}
-            </span>
-            <h3 className="mt-3 font-serif text-xl font-semibold text-brand-green">
-              {s.title}
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-brand-ink/75">{s.body}</p>
-          </li>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-gold">
+              {d.role}
+            </p>
+            <p className="mt-1 font-display text-base font-semibold text-white">
+              {d.name}
+            </p>
+          </div>
         ))}
-      </ol>
+      </div>
+      <p className="mt-10 text-xs text-brand-mint/60">
+        Interested in a specific division?{" "}
+        <Link
+          href="/contact"
+          className="underline decoration-brand-gold underline-offset-4"
+        >
+          Reach out to us
+        </Link>
+        .
+      </p>
     </Section>
   );
 }

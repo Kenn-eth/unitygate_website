@@ -1,50 +1,68 @@
 import type { Metadata } from "next";
-import { Eyebrow, Section, SerifHeading } from "@/components/section";
+import { Eyebrow, Section, DisplayHeading } from "@/components/section";
 import { CtaBand } from "@/components/cta-band";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Independent, privately held, and patient. Learn what shapes UnityGate Integrated Services.",
+    "UnityGate Integrated Services PLC is a Nigerian-owned investment and business development company operating six divisions across strategic sectors of the economy.",
 };
 
-const values = [
+const divisions = [
   {
-    title: "Independent",
-    body: "Privately held by our partners. No outside shareholders, no quarterly sales targets.",
+    name: "UnityGate Capital",
+    role: "Investor relations & capital management",
   },
   {
-    title: "Transparent",
-    body: "Plain-language reporting, plain-English fees, and a written policy you can hold us to.",
+    name: "UnityGate Transport",
+    role: "Transportation & fleet operations",
   },
   {
-    title: "Patient",
-    body: "We think in decades. The market gives us many chances to be wrong; patience is one of the few edges left.",
+    name: "UnityGate Trading",
+    role: "General merchandise",
   },
   {
-    title: "Concentrated",
-    body: "We work with a small number of clients each year. Scale is not our ambition.",
+    name: "UnityGate Properties",
+    role: "Land & real estate",
+  },
+  {
+    name: "UnityGate Building Supplies",
+    role: "Building materials",
+  },
+  {
+    name: "UnityGate Ventures",
+    role: "New business opportunities",
   },
 ];
 
-const milestones = [
-  { year: "2015", title: "Founded", body: "Six partners pool capital and conviction to launch UnityGate." },
-  { year: "2018", title: "Wealth practice", body: "Family wealth management expands beyond the founding partners' circle." },
-  { year: "2021", title: "First institutional mandate", body: "Endowment selects UnityGate for a long-only equity allocation." },
-  { year: "2024", title: "Fund platform", body: "Pooled vehicles formalised for institutional and qualified investors." },
+const valueProps = [
+  "Real-sector business ownership across strategic industries",
+  "Capital recycled between operating divisions",
+  "Asset-backed positioning through property and materials",
+  "Diversified footing across the Nigerian economy",
+  "Long-term, inflation-resilient asset accumulation",
+  "Structured governance and transparent reporting",
+];
+
+const governancePrinciples = [
+  "Structured capital tracking",
+  "Defined division mandates",
+  "Clear allocation of funds",
+  "Regular internal performance monitoring",
+  "Investor communication and reporting structure",
 ];
 
 export default function AboutPage() {
   return (
     <>
       <AboutHero />
-      <Mission />
-      <Values />
-      <Timeline />
-      <Leadership />
+      <MissionVision />
+      <Divisions />
+      <ValueAndGovernance />
       <CtaBand
-        heading="Curious whether we are the right firm for you?"
-        body="A short conversation is the best way to find out. We will be honest if we are not."
+        heading="Want to understand the group in detail?"
+        body="We're happy to walk you through the divisions, how capital flows between them, and where your interest — as an investor, partner, or supplier — could fit."
+        ctaLabel="Talk to us"
       />
     </>
   );
@@ -56,13 +74,20 @@ function AboutHero() {
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <div className="max-w-3xl">
           <Eyebrow>About UnityGate</Eyebrow>
-          <h1 className="mt-6 font-serif text-4xl font-semibold leading-tight text-brand-green sm:text-5xl lg:text-6xl">
-            A privately held investment firm, built to outlast cycles.
+          <h1 className="mt-6 font-display text-4xl font-semibold leading-tight text-brand-green sm:text-5xl lg:text-6xl">
+            A Nigerian-owned conglomerate, built for the real economy.
           </h1>
           <p className="mt-8 text-lg leading-relaxed text-brand-ink/75">
-            UnityGate Integrated Services was founded by six partners who shared a belief
-            that the most valuable thing an investment firm can offer its clients is
-            patience — and the discipline to back it up.
+            UnityGate Integrated Services PLC is a Nigerian-owned investment and
+            business development company established with the objective of
+            identifying, financing, and managing commercially viable investment
+            opportunities across strategic sectors of the Nigerian economy.
+          </p>
+          <p className="mt-5 text-base leading-relaxed text-brand-ink/70">
+            The group operates through six focused divisions — spanning capital
+            management, transportation, general merchandise, real estate, building
+            supplies, and new ventures — each functioning as a distinct business
+            with a clear mandate.
           </p>
         </div>
       </div>
@@ -70,133 +95,125 @@ function AboutHero() {
   );
 }
 
-function Mission() {
+function MissionVision() {
   return (
     <Section className="bg-brand-mint">
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
-        <div>
-          <Eyebrow>Our mission</Eyebrow>
-          <SerifHeading className="mt-5">
-            To steward capital with the care of a custodian and the rigour of an
-            institution.
-          </SerifHeading>
-        </div>
-        <div className="space-y-5 text-base leading-relaxed text-brand-ink/80">
-          <p>
-            We exist to help our clients turn capital into long-term outcomes — funded
-            retirements, generational wealth, mission-driven endowments, lasting
-            institutions.
+      <div className="grid gap-6 md:grid-cols-3">
+        <article className="rounded-2xl border border-brand-green/10 bg-white p-8">
+          <Eyebrow>Mission</Eyebrow>
+          <p className="mt-5 font-display text-xl font-semibold leading-snug text-brand-green">
+            To build structured and sustainable wealth through disciplined operation
+            of real-sector businesses and strategic reinvestment into long-term
+            assets.
           </p>
-          <p>
-            We do that with a small team, a written investment policy, and a refusal to
-            confuse activity with progress. Our partners invest meaningful personal
-            capital in every strategy we offer, which is the simplest alignment statement
-            we know how to make.
+        </article>
+        <article className="rounded-2xl border border-brand-green/10 bg-white p-8">
+          <Eyebrow>Vision</Eyebrow>
+          <p className="mt-5 font-display text-xl font-semibold leading-snug text-brand-green">
+            To become a leading integrated investment enterprise recognised for
+            delivering structured value across strategic sectors of the Nigerian
+            economy.
           </p>
-          <p className="font-serif text-xl italic text-brand-green">
-            Connecting People, Powering Progress.
+        </article>
+        <article className="relative overflow-hidden rounded-2xl bg-brand-green p-8 text-brand-mint">
+          <Eyebrow className="text-brand-gold">Motto</Eyebrow>
+          <p className="mt-5 font-serif text-2xl leading-snug italic text-white">
+            &ldquo;Connecting People, Powering Progress.&rdquo;
           </p>
-        </div>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-brand-gold/15 blur-2xl"
+          />
+        </article>
       </div>
     </Section>
   );
 }
 
-function Values() {
+function Divisions() {
   return (
     <Section className="bg-brand-paper">
       <div className="max-w-2xl">
-        <Eyebrow>What we believe</Eyebrow>
-        <SerifHeading className="mt-5">Four principles, written down and held to.</SerifHeading>
-      </div>
-      <div className="mt-14 grid gap-6 md:grid-cols-2">
-        {values.map((v, i) => (
-          <article
-            key={v.title}
-            className="rounded-xl border border-brand-green/10 bg-white p-8"
-          >
-            <div className="flex items-center gap-4">
-              <span className="font-serif text-2xl text-brand-gold">0{i + 1}</span>
-              <h3 className="font-serif text-2xl font-semibold text-brand-green">
-                {v.title}
-              </h3>
-            </div>
-            <p className="mt-4 text-base leading-relaxed text-brand-ink/75">{v.body}</p>
-          </article>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-function Timeline() {
-  return (
-    <Section className="bg-brand-green text-brand-mint">
-      <div className="max-w-2xl">
-        <Eyebrow className="text-brand-gold">Our story</Eyebrow>
-        <h2 className="mt-5 font-serif text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
-          A decade of steady, intentional growth.
-        </h2>
-      </div>
-      <ol className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {milestones.map((m) => (
-          <li
-            key={m.year}
-            className="relative rounded-xl border border-brand-mint/15 bg-brand-green-dark/40 p-6"
-          >
-            <span className="font-serif text-3xl font-semibold text-brand-gold">
-              {m.year}
-            </span>
-            <h3 className="mt-2 font-serif text-lg font-semibold text-white">
-              {m.title}
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-brand-mint/85">{m.body}</p>
-          </li>
-        ))}
-      </ol>
-    </Section>
-  );
-}
-
-function Leadership() {
-  return (
-    <Section className="bg-brand-paper">
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:items-end lg:gap-20">
-        <div>
-          <Eyebrow>Leadership</Eyebrow>
-          <SerifHeading className="mt-5">
-            Six partners. One investment policy.
-          </SerifHeading>
-        </div>
-        <p className="text-base leading-relaxed text-brand-ink/75">
-          Our partners come from asset management, private banking, and operating
-          businesses. Every senior client relationship is owned by a partner, not handed
-          off.
+        <Eyebrow>Our six divisions</Eyebrow>
+        <DisplayHeading className="mt-5">
+          Six businesses. One capital cycle.
+        </DisplayHeading>
+        <p className="mt-5 text-base leading-relaxed text-brand-ink/75">
+          UnityGate Capital sits at the centre of the group, allocating and recycling
+          capital between the five operating divisions. Each division stands as its
+          own real business.
         </p>
       </div>
-      <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {[1, 2, 3, 4, 5, 6].map((i) => (
+      <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {divisions.map((d, i) => (
           <article
-            key={i}
-            className="overflow-hidden rounded-xl border border-brand-green/10 bg-white"
+            key={d.name}
+            className="rounded-xl border border-brand-green/10 bg-white p-8"
           >
-            <div className="aspect-[4/5] bg-gradient-to-br from-brand-mint to-brand-mint/60 flex items-end p-6">
-              <span className="font-serif text-5xl font-semibold text-brand-green/30">
-                0{i}
-              </span>
-            </div>
-            <div className="p-6">
-              <h3 className="font-serif text-xl font-semibold text-brand-green">
-                Partner Name
-              </h3>
-              <p className="mt-1 text-sm text-brand-gold-dark">Partner, [Practice]</p>
-              <p className="mt-3 text-sm leading-relaxed text-brand-ink/75">
-                Short biographical paragraph describing background, prior experience, and
-                area of focus at UnityGate.
-              </p>
-            </div>
+            <span className="font-display text-sm font-semibold text-brand-gold">
+              0{i + 1}
+            </span>
+            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-ink/55">
+              {d.role}
+            </p>
+            <h3 className="mt-2 font-display text-2xl font-semibold text-brand-green">
+              {d.name}
+            </h3>
           </article>
         ))}
+      </div>
+    </Section>
+  );
+}
+
+function ValueAndGovernance() {
+  return (
+    <Section className="bg-brand-green text-brand-mint">
+      <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+        <div>
+          <Eyebrow className="text-brand-gold">Value proposition</Eyebrow>
+          <h2 className="mt-5 font-display text-3xl font-semibold leading-tight text-white sm:text-4xl">
+            What UnityGate delivers.
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-brand-mint/85">
+            A diversified conglomerate structure built for durability, with real
+            businesses, real assets, and structured governance across the group.
+          </p>
+          <ul className="mt-8 space-y-3 text-sm leading-relaxed text-brand-mint/90">
+            {valueProps.map((v) => (
+              <li key={v} className="flex gap-3">
+                <span
+                  aria-hidden
+                  className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-brand-gold"
+                />
+                <span>{v}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <Eyebrow className="text-brand-gold">Governance &amp; transparency</Eyebrow>
+          <h2 className="mt-5 font-display text-3xl font-semibold leading-tight text-white sm:text-4xl">
+            Accountability is structural.
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-brand-mint/85">
+            UnityGate operates with a structured governance approach aimed at
+            ensuring accountability, clarity, and operational discipline across every
+            division.
+          </p>
+          <ul className="mt-8 space-y-3 text-sm leading-relaxed text-brand-mint/90">
+            {governancePrinciples.map((g) => (
+              <li key={g} className="flex gap-3">
+                <span
+                  aria-hidden
+                  className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-brand-gold"
+                />
+                <span>{g}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </Section>
   );

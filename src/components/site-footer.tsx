@@ -1,5 +1,10 @@
 import Link from "next/link";
 import { Wordmark } from "@/components/wordmark";
+import { LinkedinGlyph } from "@/components/linkedin-glyph";
+import { WHATSAPP_NUMBER, whatsappDisplay, whatsappUrl } from "@/lib/whatsapp";
+
+const LINKEDIN_URL =
+  "https://www.linkedin.com/company/unitygate-integrated-services/";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -10,12 +15,24 @@ export function SiteFooter() {
           <div className="md:col-span-2">
             <Wordmark variant="light" className="h-12 text-lg" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-brand-mint/80">
-              UnityGate Integrated Services stewards capital for families, founders, and
-              institutions through disciplined wealth and asset management.
+              UnityGate Integrated Services PLC is a Nigerian-owned conglomerate
+              operating six business divisions across capital, transport, trading,
+              properties, building supplies, and new ventures.
             </p>
             <p className="mt-6 font-serif text-lg italic text-brand-gold">
               Connecting People, Powering Progress.
             </p>
+            <div className="mt-8 flex items-center gap-3">
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow UnityGate on LinkedIn"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-mint/25 text-brand-mint transition-colors hover:border-brand-gold hover:bg-brand-gold hover:text-brand-green-dark"
+              >
+                <LinkedinGlyph className="h-5 w-5" />
+              </a>
+            </div>
           </div>
 
           <div>
@@ -24,7 +41,7 @@ export function SiteFooter() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm">
               <li><Link href="/" className="hover:text-white">Home</Link></li>
-              <li><Link href="/services" className="hover:text-white">Services</Link></li>
+              <li><Link href="/services" className="hover:text-white">Divisions</Link></li>
               <li><Link href="/about" className="hover:text-white">About Us</Link></li>
               <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
             </ul>
@@ -36,17 +53,28 @@ export function SiteFooter() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm leading-relaxed">
               <li>
+                <a
+                  href={whatsappUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 hover:text-white"
+                >
+                  <span aria-hidden className="text-brand-gold">●</span>
+                  WhatsApp · {whatsappDisplay()}
+                </a>
+              </li>
+              <li>
                 <a href="mailto:hello@unitygate.com" className="hover:text-white">
                   hello@unitygate.com
                 </a>
               </li>
               <li>
-                <a href="tel:+10000000000" className="hover:text-white">
-                  +1 (000) 000-0000
+                <a href={`tel:+${WHATSAPP_NUMBER}`} className="hover:text-white">
+                  {whatsappDisplay()}
                 </a>
               </li>
               <li className="text-brand-mint/80">
-                Office address line 1<br />City, State 00000
+                Enugu, Nigeria
               </li>
             </ul>
           </div>

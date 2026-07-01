@@ -21,7 +21,7 @@ export function CtaBand({
       </div>
       <div className="relative mx-auto flex max-w-5xl flex-col items-start gap-8 px-6 py-20 sm:py-24 md:flex-row md:items-center md:justify-between">
         <div className="max-w-xl">
-          <h2 className="font-serif text-3xl font-semibold leading-tight sm:text-4xl">
+          <h2 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">
             {heading}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-brand-mint/90">{body}</p>

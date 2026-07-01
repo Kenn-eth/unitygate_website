@@ -7,15 +7,23 @@ type Props = {
 export function Wordmark({ className, variant = "dark", showText = true }: Props) {
   const primary = variant === "dark" ? "#004C24" : "#E8F2EC";
   const textClass = variant === "dark" ? "text-brand-green" : "text-brand-mint";
+  const subClass = variant === "dark" ? "text-brand-green/70" : "text-brand-mint/70";
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className ?? ""}`}>
       <Logomark primary={primary} className="h-full w-auto shrink-0" />
       {showText && (
-        <span
-          className={`font-serif text-[1.35em] font-semibold leading-none tracking-tight ${textClass}`}
-        >
-          UnityGate
+        <span className="flex flex-col">
+          <span
+            className={`font-serif text-[1.35em] font-semibold leading-none tracking-tight ${textClass}`}
+          >
+            UnityGate
+          </span>
+          <span
+            className={`mt-1 text-[0.55em] font-medium uppercase tracking-[0.18em] leading-none ${subClass}`}
+          >
+            Integrated Services
+          </span>
         </span>
       )}
     </span>

@@ -36,7 +36,7 @@ type HeadingProps = {
   as?: "h1" | "h2" | "h3";
 };
 
-export function SerifHeading({ children, className = "", as = "h2" }: HeadingProps) {
+export function DisplayHeading({ children, className = "", as = "h2" }: HeadingProps) {
   const Tag = as;
   const sizes =
     as === "h1"
@@ -46,7 +46,7 @@ export function SerifHeading({ children, className = "", as = "h2" }: HeadingPro
       : "text-2xl sm:text-3xl";
   return (
     <Tag
-      className={`font-serif font-semibold leading-[1.1] tracking-tight text-brand-green ${sizes} ${className}`}
+      className={`font-display font-semibold leading-[1.1] tracking-tight text-brand-green ${sizes} ${className}`}
     >
       {children}
     </Tag>

@@ -10,6 +10,7 @@
   --color-brand-ink: #1A1F1C;
   --color-brand-paper: #FAFAF7;
 
+  --font-display: var(--font-jakarta), system-ui, -apple-system, sans-serif;
   --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
 }

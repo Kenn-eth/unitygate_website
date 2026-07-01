@@ -32,9 +32,13 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
+
+# hero video: keep the uncompressed 4K Pexels master out of the repo (over GitHub's 100 MB limit)
+/public/hero.mp4
 
 # typescript
 *.tsbuildinfo
