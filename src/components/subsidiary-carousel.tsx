@@ -109,9 +109,9 @@ type SlideProps = {
 
 function Slide({ subsidiary, ctaHref, ctaLabel, priority }: SlideProps) {
   return (
-    <div className="grid items-center gap-16 lg:grid-cols-[5fr_6fr] lg:gap-20">
+    <div className="grid items-center gap-10 lg:grid-cols-[5fr_6fr] lg:gap-20">
       <div className="relative">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-[0_40px_80px_-40px_rgba(0,0,0,0.55)]">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-[0_40px_80px_-40px_rgba(0,0,0,0.55)] sm:aspect-[3/2] lg:aspect-[4/5]">
           {subsidiary.imageSrc ? (
             <Image
               src={subsidiary.imageSrc}

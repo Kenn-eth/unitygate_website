@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Eyebrow, Section, DisplayHeading } from "@/components/section";
 import { CtaBand } from "@/components/cta-band";
 
@@ -112,7 +111,6 @@ export default function SubsidiariesPage() {
       {subsidiaries.map((d, i) => (
         <SubsidiaryBlock key={d.id} subsidiary={d} bg={i % 2 === 0 ? "paper" : "mint"} />
       ))}
-      <GroupOverview />
       <CtaBand
         heading="Want to work with UnityGate?"
         body="Whether as an investor, a supplier, or a partner across one of our subsidiaries — we welcome the conversation."
@@ -186,46 +184,3 @@ function SubsidiaryBlock({
   );
 }
 
-function GroupOverview() {
-  return (
-    <Section className="bg-brand-green text-brand-mint">
-      <div className="max-w-2xl">
-        <Eyebrow className="text-brand-gold">Group overview</Eyebrow>
-        <h2 className="mt-5 font-display text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
-          One capital arm. Five operating businesses.
-        </h2>
-        <p className="mt-6 text-base leading-relaxed text-brand-mint/85">
-          UnityGate Capital sits at the centre of the group — allocating and recycling
-          capital between the operating subsidiaries. Each subsidiary stands on its own as
-          a real business, and together they form a diversified footing across the
-          Nigerian economy.
-        </p>
-      </div>
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {subsidiaries.map((d) => (
-          <div
-            key={d.id}
-            className="rounded-xl border border-brand-mint/15 bg-brand-green-dark/40 p-5"
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-gold">
-              {d.role}
-            </p>
-            <p className="mt-1 font-display text-base font-semibold text-white">
-              {d.name}
-            </p>
-          </div>
-        ))}
-      </div>
-      <p className="mt-10 text-xs text-brand-mint/60">
-        Interested in a specific subsidiary?{" "}
-        <Link
-          href="/contact"
-          className="underline decoration-brand-gold underline-offset-4"
-        >
-          Reach out to us
-        </Link>
-        .
-      </p>
-    </Section>
-  );
-}
