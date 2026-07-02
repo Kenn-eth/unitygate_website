@@ -111,7 +111,7 @@ function Slide({ subsidiary, ctaHref, ctaLabel, priority }: SlideProps) {
   return (
     <div className="grid items-center gap-10 lg:grid-cols-[5fr_6fr] lg:gap-20">
       <div className="relative">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-[0_40px_80px_-40px_rgba(0,0,0,0.55)] sm:aspect-[3/2] lg:aspect-[4/5]">
+        <div className="relative aspect-[4/3] transform-gpu overflow-hidden rounded-2xl shadow-[0_8px_20px_-8px_rgba(0,0,0,0.35)] sm:aspect-[3/2] lg:aspect-[4/5] lg:shadow-[0_40px_80px_-40px_rgba(0,0,0,0.55)]">
           {subsidiary.imageSrc ? (
             <Image
               src={subsidiary.imageSrc}
@@ -133,7 +133,7 @@ function Slide({ subsidiary, ctaHref, ctaLabel, priority }: SlideProps) {
         </div>
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-4 -right-4 h-28 w-28 rounded-br-2xl border-b-2 border-r-2 border-brand-gold"
+          className="pointer-events-none absolute -bottom-3 -right-3 h-16 w-16 rounded-br-2xl border-b-2 border-r-2 border-brand-gold sm:-bottom-4 sm:-right-4 sm:h-28 sm:w-28"
         />
       </div>
 
