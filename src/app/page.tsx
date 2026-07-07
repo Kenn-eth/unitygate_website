@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow, Section, DisplayHeading } from "@/components/section";
 import { CtaBand } from "@/components/cta-band";
@@ -42,9 +43,7 @@ const subsidiaries = [
   },
 ];
 
-// Hero videos in public/: "/hero.mp4" (Pexels naira-bills, gitignored 4K master),
-// "/hero-alt.mp4" (Pixabay drone-city), "/hero-bridge.mp4" (Pixabay buildings + bridge).
-const HERO_VIDEO = "/hero-bridge.mp4";
+const HERO_IMAGE = "/hero-image.jpg";
 
 const principles = [
   {
@@ -212,28 +211,21 @@ function GlobeIcon({ className }: { className?: string }) {
 function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-brand-green-dark text-white">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        aria-hidden
-        className="absolute inset-0 -z-20 h-full w-full object-cover"
-      >
-        <source src={HERO_VIDEO} type="video/mp4" />
-      </video>
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_70%_at_20%_40%,rgba(0,53,26,0.65)_0%,rgba(0,76,36,0.22)_55%,transparent_85%)]"
+      <Image
+        src={HERO_IMAGE}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="-z-20 object-cover"
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(0,30,15,0.45)_0%,transparent_30%)]"
+        className="absolute inset-0 -z-10 bg-black/55"
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_85%_80%,rgba(200,144,32,0.22),transparent_55%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_85%_80%,rgba(200,144,32,0.20),transparent_55%)]"
       />
       <div
         aria-hidden
@@ -241,7 +233,7 @@ function Hero() {
       />
 
       <div className="mx-auto max-w-4xl px-6 py-28 sm:py-36 lg:py-44">
-        <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.55)] sm:text-6xl lg:text-[68px]">
+        <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.85)] sm:text-6xl lg:text-[68px]">
           A moving money makes{" "}
           <span className="relative inline-block">
             more money.
@@ -251,7 +243,7 @@ function Hero() {
             />
           </span>
         </h1>
-        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-brand-mint/90">
+        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.7)]">
           UnityGate Integrated Services PLC is a Nigerian-owned conglomerate operating
           businesses across{" "}
           <span className="font-semibold text-brand-gold">capital</span>,{" "}
@@ -279,7 +271,7 @@ function Hero() {
             Explore our subsidiaries
           </Link>
         </div>
-        <p className="mt-12 font-serif text-base italic text-brand-mint/80">
+        <p className="mt-12 font-serif text-base italic text-brand-mint [text-shadow:0_1px_6px_rgba(0,0,0,0.7)]">
           Connecting People, Powering Progress.
         </p>
       </div>
