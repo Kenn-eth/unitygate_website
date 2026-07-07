@@ -42,8 +42,9 @@ const subsidiaries = [
   },
 ];
 
-// Switch between hero videos: "/hero.mp4" (Pexels naira-bills) or "/hero-alt.mp4" (Pixabay drone-city).
-const HERO_VIDEO = "/hero-alt.mp4";
+// Hero videos in public/: "/hero.mp4" (Pexels naira-bills, gitignored 4K master),
+// "/hero-alt.mp4" (Pixabay drone-city), "/hero-bridge.mp4" (Pixabay buildings + bridge).
+const HERO_VIDEO = "/hero-bridge.mp4";
 
 const principles = [
   {
