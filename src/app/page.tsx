@@ -8,7 +8,7 @@ const subsidiaries = [
     eyebrow: "UnityGate Capital",
     title: "The capital arm of the group.",
     body: "Investor relations and capital management. UnityGate Capital structures investor participation, manages inflows and outflows, and oversees financial reporting across the wider UnityGate group.",
-    initial: "C",
+    imageSrc: "/capital-v2.jpg",
   },
   {
     eyebrow: "UnityGate Transport",
@@ -38,7 +38,7 @@ const subsidiaries = [
     eyebrow: "UnityGate Ventures",
     title: "Where new opportunities become new companies.",
     body: "Incubation, evaluation, and financing of new business opportunities — seeding the next generation of UnityGate operating businesses.",
-    initial: "V",
+    imageSrc: "/ventures.jpg",
   },
 ];
 
